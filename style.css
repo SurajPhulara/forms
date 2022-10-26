@@ -1,0 +1,78 @@
+body{
+    background-color: rgb(240,235,248);
+}
+
+.form{
+    display: flex;
+    column-gap: 2vw;
+}
+
+/* styling header box which shows form heading and description */
+.form__header{
+    background-color: white;
+    margin-top: 12px;
+    border-top:10px solid rgb(103, 58, 183);
+    border-radius: 8px;
+    padding:15px 25px;
+    height: fit-content;
+    min-height: 100px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50vw;
+}
+
+.form__header_title,
+.form__header_desc
+{
+    overflow-wrap: break-word;
+    border: none;
+    outline-width: 0;
+    background: transparent;
+}
+
+.form__header_title
+{
+    font-size: 30px;
+}
+
+.form__header_desc{
+    font-size: 20px;
+}
+
+
+/* style of the json input box which accepts form structure from user */
+.model_input{
+    width: 40vw;
+    max-width: 40vw;
+    height: 90vh;
+    max-height: 90vh;
+}
+
+/* styling question box */
+.question_box{
+    border: none;
+    border-radius: 8px;
+    padding: 18px 20px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    border: 1px solid rgb(218,220,224);
+    background-color: white;
+    font-size: 20px;
+}
+.text_answer{
+    margin: 10px 0 0px 0;
+    border: none;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    outline: 0;
+    font-size: 15px;
+}
+
+.optionlist{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
