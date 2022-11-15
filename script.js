@@ -22,9 +22,34 @@ var state = {
         },{
             questionStatement: "Untitled Question",
             questionType: "text",
-            options: [
-                    "Option 1"
-            ]
+        },
+        {
+          questionStatement: "Untitled Question",
+          questionType: "range"
+        },
+        {
+          questionStatement: "Untitled Question",
+          questionType: "color"
+        },
+        {
+          questionStatement: "Untitled Question",
+          questionType: "date"
+        },
+        {
+          questionStatement: "Untitled Question",
+          questionType: "datetime-local"
+        },
+        {
+          questionStatement: "Untitled Question",
+          questionType: "file"
+        },
+        {
+          questionStatement: "Untitled Question",
+          questionType: "week"
+        },
+        {
+          questionStatement: "Untitled Question",
+          questionType: "time"
         },
     ]
 };
@@ -53,15 +78,11 @@ async function create_view() {
     
         var question = document.createElement("div")
         question.className = "question";
+        if(e.questionStatement)
         question.innerHTML = e.questionStatement;
         question_box.appendChild(question)
     
-        if (e.questionType == "text") {
-            var answer = document.createElement("input")
-            answer.className = "text_answer";
-            question_box.appendChild(answer);
-        }
-        else if(e.questionType == "radio" || e.questionType == "checkbox")
+        if(e.questionType == "radio" || e.questionType == "checkbox")
         {
             e.options.forEach((o)=>{
                 var optionlist = document.createElement("div")
@@ -77,6 +98,19 @@ async function create_view() {
                 optionlist.appendChild(label);
                 question_box.appendChild(optionlist);
             })
+        }
+        else if (e.questionType == "submit")
+        {
+            var answer = document.createElement("input")
+            // answer.className = "text_answer";
+            answer.type =  e.questionType;
+            question_box.appendChild(answer);
+        }
+        else {
+            var answer = document.createElement("input")
+            answer.className = "text_answer";
+            answer.type =  e.questionType;
+            question_box.appendChild(answer);
         }
     
         
