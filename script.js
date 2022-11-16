@@ -18,7 +18,8 @@ var state = {
     },
     "age": {
       "type": "number",
-      "title": "Age"
+      "title": "Age",
+      "description":"enter your age here"
     },
     "dropdown":{
       "type": "string",
