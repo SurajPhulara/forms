@@ -50,7 +50,7 @@ async function create_view() {
 
   var form = document.querySelector(".form_view")
   document.querySelector(".form__header_title").innerHTML = state.title;
-  document.querySelector(".form__header_desc").innerHTML = state.description;
+  document.querySelector(".form__header_desc").innerHTML = (state.description)?state.description:" ";
 
   await document.querySelectorAll(".question_box").forEach((e) => {
     e.remove();
