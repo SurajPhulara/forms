@@ -76,3 +76,8 @@ body{
     margin-top: 10px;
 }
 
+.description{
+    color:rgb(74, 74, 74);
+    font-size: medium;
+    margin-top: 5px;
+}
