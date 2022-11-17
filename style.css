@@ -81,3 +81,8 @@ body{
     font-size: medium;
     margin-top: 5px;
 }
+
+.required::after{
+    content: " *";
+    color: red;
+}
