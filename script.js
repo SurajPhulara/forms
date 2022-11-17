@@ -1,39 +1,26 @@
 // initial state of the form
 var state = {
-  "title": "A registration form",
-  "description": "A simple form example.",
-  "type": "object",
-  "required": [
-    "firstName",
-    "lastName"
-  ],
-  "properties": {
+  "title": "signup form",
+    "properties": {
     "firstName": {
       "type": "string",
-      "title": "First name",
+        "title": "First name"
     },
     "lastName": {
       "type": "string",
-      "title": "Last name"
+        "title": "Last name"
     },
-    "age": {
+    "Email id": {
+      "type": "string",
+        "title": "Email id"
+    },
+    "Contact": {
       "type": "number",
-      "title": "Age",
-      "description":"enter your age here"
+        "title": "Phone Number"
     },
-    "dropdown":{
+    "Password": {
       "type": "string",
-      "title": "select",
-      "enum": ["option 1", "option 2", "option 3", "option 4"],
-      "default": "option 1"
-    },
-    "telephone": {
-      "type": "string",
-      "title": "Telephone"
-    },
-    "boolean": {
-      "type": "boolean",
-      "title": "remember me"
+        "title": "Password"
     }
   }
 };
