@@ -42,55 +42,52 @@ var state = {
 async function submitk() {
   state = await JSON.parse(document.querySelector("#model_input").value);
   document.querySelector("#model_input").innerHTML = await JSON.stringify(state, null, 2);
-  create_view();
-}
-
-// generates and display view from state json
-async function create_view() {
-
-  var form = document.querySelector(".form_view")
-  document.querySelector(".form__header_title").innerHTML = state.title;
-  document.querySelector(".form__header_desc").innerHTML = (state.description)?state.description:" ";
-
   await document.querySelectorAll(".question_box").forEach((e) => {
     e.remove();
   })
+  await document.querySelectorAll(".form__header").forEach((e) => {
+    e.remove();
+  })
+  create_view(state);
+}
+
+// generates and display view from state json
+async function create_view(state) {
+
+  var form = document.querySelector(".form_view")
+    var form_header = document.createElement("div")
+    form_header.className = "form__header";
+    var form_title = document.createElement("div")
+    form_title.className = "form__header_title";
+    form_title.innerHTML = state.title;
+    // if(state.description)
+    // {
+    // var form_description = document.createElement("div")
+    // form_description.className = "form__header_desc";
+    // }
+    var form_description = document.createElement("div")
+    form_description.className = "form__header_desc";
+    form_description.innerHTML = (state.description)?state.description:" ";
+    form_header.appendChild(form_title);
+    form_header.appendChild(form_description);
+    form.appendChild(form_header);
 
   Object.keys(state.properties).forEach((e, i) => {
     console.log(state.properties[e]);
+    if(state.properties[e].type == "object")
+    {
+      create_view(state.properties[e]);
+      return;
+      // continue;
+    }
     var question_box = document.createElement("div")
     question_box.className = "question_box";
 
     var question = document.createElement("div")
     question.className = "question";
-    if (state.properties[e].title)
+    if (state.properties[e].title && state.properties[e].type != "object")
       question.innerHTML = state.properties[e].title;
     question_box.appendChild(question)
-
-    // if(e.questionType == "radio" || e.questionType == "checkbox")
-    // {
-    //     e.options.forEach((o)=>{
-    //         var optionlist = document.createElement("div")
-    //         optionlist.className="optionlist"
-    //         var answer = document.createElement("input")
-    //         answer.className = "radio_answer";
-    //         answer.name=`question${i}`
-    //         var label = document.createElement("label")
-    //         label.className="label"
-    //         label.innerHTML=o
-    //         answer.type=e.questionType
-    //         optionlist.appendChild(answer);
-    //         optionlist.appendChild(label);
-    //         question_box.appendChild(optionlist);
-    //     })
-    // }
-    // else {
-    //     var answer = document.createElement("input")
-    //     if(e.questionType != "submit")
-    //     answer.className = "text_answer";
-    //     answer.type =  e.questionType;
-    //     question_box.appendChild(answer);
-    // }
 
     if (state.properties[e].type == "string") {
       if (state.properties[e].format == "color") {
@@ -136,11 +133,6 @@ async function create_view() {
           question_box.appendChild(answer);
       }
 
-    // if(state.properties[e].type == "object")
-    // {
-
-    // }
-
     if(state.properties[e].description)
     {
       var description = document.createElement("div")
@@ -155,4 +147,4 @@ async function create_view() {
 
 
 document.querySelector("#model_input").innerHTML = JSON.stringify(state, null, 2);
-create_view()
+create_view(state)
